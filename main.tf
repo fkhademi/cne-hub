@@ -14,6 +14,7 @@ module "spoke_aws_1" {
   version = "1.0.2"
 
   cidr          = cidrsubnet(var.hub_cidr, 4, 0)
+  name          = "pseudo-dc"
   region        = var.hub_region
   account       = var.aws_account_name
   transit_gw    = module.transit_aws_1.transit_gateway.gw_name
