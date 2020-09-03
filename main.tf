@@ -17,7 +17,7 @@ module "spoke_aws_1" {
   name          = "pseudo-dc"
   region        = var.hub_region
   account       = var.aws_account_name
-  transit_gw    = module.transit_aws_1.transit_gateway.gw_name
+  transit_gw    = module.transit_hub.transit_gateway.gw_name
   ha_gw         = false
 }
 
@@ -36,9 +36,9 @@ module "aws_srv1" {
 resource "aviatrix_transit_external_device_conn" "s2c" {
   count             = var.num_pods
 
-  vpc_id            = module.transit_aws_1.vpc.vpc_id
+  vpc_id            = module.transit_hub.vpc.vpc_id
   connection_name   = "pod${count.index +1}"
-  gw_name           = module.transit_aws_1.transit_gateway.gw_name
+  gw_name           = module.transit_hub.transit_gateway.gw_name
   connection_type   = "bgp"
   bgp_local_as_num  = "65000"
   bgp_remote_as_num = "650${format("%02d", count.index + 1)}"
