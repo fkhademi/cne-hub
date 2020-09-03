@@ -13,7 +13,7 @@ module "spoke_aws_1" {
   source  = "terraform-aviatrix-modules/aws-spoke/aviatrix"
   version = "1.0.2"
 
-  cidr          = cidrsubnet(var.hub_cidr, 4, 0)
+  cidr          = cidrsubnet(var.hub_cidr, 4, 1)
   name          = "pseudo-dc"
   region        = var.hub_region
   account       = var.aws_account_name
