@@ -2,6 +2,7 @@
 variable "aviatrix_admin_account" { default = "admin" }
 variable "aviatrix_admin_password" { default = "Avi12345-" }
 variable "aviatrix_controller_ip" { default = "controller.avxlab.de" }
+variable "aws_account_name" { }
 
 # CNE details
 variable "num_pods" { }
