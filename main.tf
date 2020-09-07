@@ -31,6 +31,27 @@ module "aws_srv1" {
   subnet_id	= module.spoke_aws_1.vpc.subnets[0].subnet_id
   ssh_key	  = var.ssh_key
 }
+resource "aws_route53_record" "srv" {
+  zone_id    = data.aws_route53_zone.domain_name.zone_id
+  name    = "onprem.${data.aws_route53_zone.domain_name.name}"
+  type    = "A"
+  ttl     = "1"
+  records = [module.aws_srv1.nic.public_ip_address] #### ?
+}
+resource "aws_route53_record" "srv-priv" {
+  zone_id    = data.aws_route53_zone.domain_name.zone_id
+  name    = "onprem-priv.${data.aws_route53_zone.domain_name.name}"
+  type    = "A"
+  ttl     = "1"
+  records = [module.aws_srv1.nic.private_ip_address] #### ?
+}
+resource "aws_route53_record" "trans_gw" {
+  zone_id    = data.aws_route53_zone.domain_name.zone_id
+  name    = "onprem-gw.${data.aws_route53_zone.domain_name.name}"
+  type    = "A"
+  ttl     = "1"
+  records = [module.transit_hub.transit_gateway.public_ip]
+}
 
 #Transit workflow step 3
 resource "aviatrix_transit_external_device_conn" "s2c" {
