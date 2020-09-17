@@ -13,6 +13,7 @@ module "cne-hub" {
   num_pods          = 15
   ssh_key           = var.ssh_key
   domain_name       = "pub.avxlab.de"
+  priv_domain_name  = "priv.avxlab.de"
 }
 ```
 
@@ -25,6 +26,7 @@ aws_account_name | AWS account name define in the AVX Controller
 num_pods | Number of pods that will be created in the CNE
 ssh_key | Ubuntu client SSH key
 domain_name | Route53 domain name
+priv_domain_name | Route53 domain name for RFC1918 hosts
 
 The following variables are optional:
 
