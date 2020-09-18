@@ -50,7 +50,7 @@ resource "aws_route53_record" "trans_gw" {
   name    = "onprem-gw.${data.aws_route53_zone.domain_name.name}"
   type    = "A"
   ttl     = "1"
-  records = [module.transit_hub.transit_gateway.public_ip]
+  records = [module.transit_hub.transit_gateway.eip]
 }
 
 #Transit workflow step 3
