@@ -30,14 +30,14 @@ module "aws_srv1" {
   vpc_id	  = module.spoke_aws_1.vpc.vpc_id
   subnet_id	= module.spoke_aws_1.vpc.subnets[0].subnet_id
   ssh_key	  = var.ssh_key
-}/*
+}
 resource "aws_route53_record" "srv" {
   zone_id    = data.aws_route53_zone.domain_name.zone_id
   name    = "onprem-pub.${data.aws_route53_zone.domain_name.name}"
   type    = "A"
   ttl     = "1"
   records = [module.aws_srv1.vm.public_ip_address] #### ?
-}*/
+}
 resource "aws_route53_record" "srv-priv" {
   zone_id    = data.aws_route53_zone.priv_domain_name.zone_id
   name    = "onprem.${data.aws_route53_zone.priv_domain_name.name}"
