@@ -1,7 +1,7 @@
 # Module deploy Transit
 module "transit_hub" {
   source    = "terraform-aviatrix-modules/aws-transit/aviatrix"
-  version   = "v1.0.2"
+  version   = "v1.1.0"
   cidr      = cidrsubnet(var.hub_cidr, 4, 0)
   region    = var.hub_region
   account   = var.aws_account_name
@@ -11,7 +11,7 @@ module "transit_hub" {
 # Module deploy Spoke
 module "spoke_aws_1" {
   source  = "terraform-aviatrix-modules/aws-spoke/aviatrix"
-  version = "1.0.2"
+  version = "1.1.0"
 
   cidr          = cidrsubnet(var.hub_cidr, 4, 1)
   name          = "pseudo-dc"
