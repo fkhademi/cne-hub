@@ -36,14 +36,14 @@ resource "aws_route53_record" "srv" {
   name    = "onprem-pub.${data.aws_route53_zone.domain_name.name}"
   type    = "A"
   ttl     = "1"
-  records = [module.aws_srv1.vm.public_ip_address] #### ?
+  records = [module.aws_srv1.vm.public_ip] #### ?
 }
 resource "aws_route53_record" "srv-priv" {
   zone_id    = data.aws_route53_zone.priv_domain_name.zone_id
   name    = "onprem.${data.aws_route53_zone.priv_domain_name.name}"
   type    = "A"
   ttl     = "1"
-  records = [module.aws_srv1.vm.private_ip_address] #### ?
+  records = [module.aws_srv1.vm.private_ip] #### ?
 }
 resource "aws_route53_record" "trans_gw" {
   zone_id    = data.aws_route53_zone.domain_name.zone_id
