@@ -66,5 +66,5 @@ resource "aviatrix_transit_external_device_conn" "s2c" {
   remote_gateway_ip = data.dns_a_record_set.fqdn[count.index].addrs[0]
   pre_shared_key    = "mapleleafs"
   local_tunnel_cidr = "100.96.${count.index +5}.2/30" #"169.254.${count.index +5}.2/30"
-  remote_tunnel_cidr  = "100.96.${count.index +5}.2/30" #"169.254.${count.index +5}.3/30"
+  remote_tunnel_cidr  = "100.96.${count.index +5}.3/30" #"169.254.${count.index +5}.3/30"
 }
