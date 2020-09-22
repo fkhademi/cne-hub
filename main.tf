@@ -31,19 +31,12 @@ module "aws_srv1" {
   subnet_id	= module.spoke_aws_1.vpc.subnets[0].subnet_id
   ssh_key	  = var.ssh_key
 }
-/*resource "aws_route53_record" "srv" {
-  zone_id    = data.aws_route53_zone.domain_name.zone_id
-  name    = "onprem-pub.${data.aws_route53_zone.domain_name.name}"
-  type    = "A"
-  ttl     = "1"
-  records = [module.aws_srv1.vm.public_ip] #### ?
-}*/
 resource "aws_route53_record" "srv-priv" {
   zone_id    = data.aws_route53_zone.priv_domain_name.zone_id
   name    = "onprem.${data.aws_route53_zone.priv_domain_name.name}"
   type    = "A"
   ttl     = "1"
-  records = [module.aws_srv1.vm.private_ip] #### ?
+  records = [module.aws_srv1.vm.private_ip]
 }
 resource "aws_route53_record" "trans_gw" {
   zone_id    = data.aws_route53_zone.domain_name.zone_id
@@ -62,9 +55,9 @@ resource "aviatrix_transit_external_device_conn" "s2c" {
   gw_name           = module.transit_hub.transit_gateway.gw_name
   connection_type   = "bgp"
   bgp_local_as_num  = "65000"
-  bgp_remote_as_num = "650${format("%02d", count.index + 5)}"
+  bgp_remote_as_num = "650${format("%02d", count.index + var.offset)}"
   remote_gateway_ip = data.dns_a_record_set.fqdn[count.index].addrs[0]
   pre_shared_key    = "mapleleafs"
-  local_tunnel_cidr = "100.96.${count.index +5}.2/30" #"169.254.${count.index +5}.2/30"
-  remote_tunnel_cidr  = "100.96.${count.index +5}.3/30" #"169.254.${count.index +5}.3/30"
+  local_tunnel_cidr = "169.254.${count.index + var.offset}.1/30"
+  remote_tunnel_cidr  = "169.254.${count.index + var.offset}.2/30"
 }

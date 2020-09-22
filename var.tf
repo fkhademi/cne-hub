@@ -6,6 +6,7 @@ variable "aws_account_name" { }
 
 # CNE details
 variable "num_pods" { }
+variable "pod_offset" { default = 0 }
 variable "domain_name" { }
 variable "priv_domain_name" { }
 
