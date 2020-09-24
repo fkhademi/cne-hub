@@ -54,6 +54,10 @@ variable "num_pods" {
     description = "Number of Pods deployed"
     default = 1 
 }
+variable "offset" { 
+    description = "Pod number to start on"
+    default = 1 
+}
 variable "domain_name" { 
     description = "Public Route53 Domain to update"
     default = "pub.avxlab.nl" 
