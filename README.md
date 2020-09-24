@@ -40,11 +40,3 @@ key | default | value
 hub_cidr | 172.16.0.0/16 | CIDR range to be used for pseudo DC
 hub_region | eu-central-1 | Region to deploy the pseudo DC
 offset  | 1 | Start offset for counting the Pods
-
-### Outputs
-This module will return the following outputs:
-
-key | description
-:---|:---
-tgw | Aviatrix transit_gateway object and all of it's properties
-srv | Ubuntu EC2 instance with all of it's properties
