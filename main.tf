@@ -32,13 +32,15 @@ module "aws_srv1" {
   ssh_key	  = var.ssh_key
 }
 resource "aws_route53_record" "srv-priv" {
-  zone_id    = data.aws_route53_zone.priv_domain_name.zone_id
-  name    = "onprem.${data.aws_route53_zone.priv_domain_name.name}"
-  type    = "A"
-  ttl     = "1"
-  records = [module.aws_srv1.vm.private_ip]
+  provider  = aws.dns
+  zone_id   = data.aws_route53_zone.priv_domain_name.zone_id
+  name      = "onprem.${data.aws_route53_zone.priv_domain_name.name}"
+  type      = "A"
+  ttl       = "1"
+  records   = [module.aws_srv1.vm.private_ip]
 }
 resource "aws_route53_record" "trans_gw" {
+  provider  = aws.dns
   zone_id    = data.aws_route53_zone.domain_name.zone_id
   name    = "onprem-gw.${data.aws_route53_zone.domain_name.name}"
   type    = "A"
