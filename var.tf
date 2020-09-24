@@ -14,3 +14,5 @@ variable "hub_cidr" { default = "172.16.0.0/16" }
 variable "hub_region" { default = "eu-central-1" }
 
 variable "ssh_key" { }
+variable "aws_access_key_dns" { }
+variable "aws_secret_key_dns" { }

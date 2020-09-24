@@ -27,6 +27,8 @@ num_pods | Number of pods that will be created in the CNE
 ssh_key | Ubuntu client SSH key
 domain_name | Route53 domain name
 priv_domain_name | Route53 domain name for RFC1918 hosts
+aws_access_key_dns |
+aws_secret_key_dns |
 
 The following variables are optional:
 
