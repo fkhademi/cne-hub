@@ -9,11 +9,13 @@ This module will build a transit VPC with an Aviatrix Transit Gateway, a spoke V
 module "cne-hub" {
   source        = "git::https://github.com/fkhademi/cne-hub.git"
 
-  aws_account_name  = "AWS"
-  num_pods          = 15
-  ssh_key           = var.ssh_key
-  domain_name       = "pub.avxlab.de"
-  priv_domain_name  = "priv.avxlab.de"
+  aws_account_name    = "AWS"
+  num_pods            = 15
+  ssh_key             = var.ssh_key
+  domain_name         = "pub.avxlab.de"
+  priv_domain_name    = "priv.avxlab.de"
+  aws_access_key_dns  = <access_key_r53>
+  aws_secret_key_dns  = <secret_key_r53>
 }
 ```
 
@@ -27,8 +29,8 @@ num_pods | Number of pods that will be created in the CNE
 ssh_key | Ubuntu client SSH key
 domain_name | Route53 domain name
 priv_domain_name | Route53 domain name for RFC1918 hosts
-aws_access_key_dns |
-aws_secret_key_dns |
+aws_access_key_dns | AWS account for updating Route53
+aws_secret_key_dns | AWS account for updating Route53
 
 The following variables are optional:
 
