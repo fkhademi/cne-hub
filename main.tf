@@ -6,7 +6,7 @@ module "transit_hub" {
   cidr      = cidrsubnet(var.hub_cidr, 4, 0)
   region    = var.hub_region
   account   = var.aws_account_name
-  bgp_manual_spoke_advertise_cidrs = "0.0.0.0/0,.${var.hub_cidr}"
+  bgp_manual_spoke_advertise_cidrs = "0.0.0.0/0, ${var.hub_cidr}"
   ha_gw     = false
 }
 
