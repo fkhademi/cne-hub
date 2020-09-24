@@ -1,10 +1,11 @@
 ### Description
-This module will build a transit VPC with an Aviatrix Transit Gateway, a spoke VPC with an Aviatrix Spoke GW and peer them together.  Additionally "n" Site2Cloud connections will be created on the Transit GW to simulate a pseudo DC for the CNE.
+This code will build a transit VPC with an Aviatrix Transit Gateway, a spoke VPC with an Aviatrix Spoke GW and peer them together.  Additionally "n" Site2Cloud connections will be created on the Transit GW to simulate a pseudo DC for the CNE.
 
 ### Diagram
-<img src="https://github.com/fkhademi/cne-hub/blob/master/diagram.png?raw=true" height="250">
+<img src="https://github.com/fkhademi/cne-hub/blob/master/diagram.png?raw=true" height="450">
 
 ### Usage Example
+If used as a module, can be used like this. 
 ```
 module "cne-hub" {
   source        = "git::https://github.com/fkhademi/cne-hub.git"
