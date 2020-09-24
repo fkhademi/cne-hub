@@ -10,8 +10,6 @@ variable "offset" { default = 1 }
 variable "domain_name" { }
 variable "priv_domain_name" { }
 
-variable "hub_cidr" { default = "172.16.0.0/16" }
-variable "hub_region" { default = "eu-central-1" }
 
 variable "ssh_key" { }
 variable "aws_access_key_dns" { }
@@ -65,6 +63,10 @@ variable "domain_name" {
 variable "priv_domain_name" { 
     description = "Private Route53 Domain to update"
     default = "priv.avxlab.nl" 
+}
+variable "hub_cidr" { 
+    description = "CIDR range for central hub"
+    default = "172.16.0.0/16" 
 }
 variable "hub_region" { 
     description = "AWS region to deploy resources"
