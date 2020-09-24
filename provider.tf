@@ -11,9 +11,9 @@ provider "aws" {
   secret_key = var.aws_secret_key
 }
 provider "dns" {
-    update {
-      server        = "8.8.8.8"
-    }
+  update {
+    server = "8.8.8.8"
+  }
 }
 provider "aws" {
   alias      = "dns"
