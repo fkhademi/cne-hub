@@ -1,10 +1,12 @@
 # Module deploy Transit
 module "transit_hub" {
-  source    = "terraform-aviatrix-modules/aws-transit/aviatrix"
-  version   = "v1.1.0"
+  #source    = "terraform-aviatrix-modules/aws-transit/aviatrix"
+  #version   = "v1.1.0"
+  source    = "git::https://github.com/fkhademi/terraform-aviatrix-aws-transit.git"
   cidr      = cidrsubnet(var.hub_cidr, 4, 0)
   region    = var.hub_region
   account   = var.aws_account_name
+  bgp_manual_spoke_advertise_cidrs = "0.0.0.0/0,.${var.hub_cidr}"
   ha_gw     = false
 }
 
