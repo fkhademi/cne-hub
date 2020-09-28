@@ -55,7 +55,7 @@ resource "aviatrix_transit_external_device_conn" "s2c" {
   count = var.num_pods
 
   vpc_id             = module.transit_hub.vpc.vpc_id
-  connection_name    = "pod${count.index + 1}"
+  connection_name    = "pod${count.index + var.offset}"
   gw_name            = module.transit_hub.transit_gateway.gw_name
   connection_type    = "bgp"
   bgp_local_as_num   = "65000"
